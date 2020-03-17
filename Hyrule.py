@@ -20,6 +20,7 @@ def questsToChoose():
     
     
     for i in range(len(startDateArray)):
+        dayAlreadyBusy = False
         val = 0
         index = 0
         for j in range(len(mostEfficientArray)):
@@ -28,21 +29,36 @@ def questsToChoose():
                 val = mostEfficientArray[j]
         
         # highest value now found
-        if range(startDateArray[index], durationArray[index] - 1) not in arrayOfDays:
+        print(range(startDateArray[index], startDateArray[index] + durationArray[index] - 1))
+        for k in range(startDateArray[index], startDateArray[index] + durationArray[index]):
+            #print(k)
+            if k in arrayOfDays:
+                dayAlreadyBusy = True
+        #print(totalRupees)
+        print(dayAlreadyBusy)
+        if dayAlreadyBusy == False:
             totalRupees += rupeesArray[index]
-            for k in range(startDateArray[index], durationArray[index] - 1):
+            for k in range(durationArray[index]):
                 arrayOfDays.append(startDateArray[index] + k)
+            #print("HELLO")
+        #print("Array of days: ")
+        #print(arrayOfDays)
         mostEfficientArray[index] = 0
         
     
     print(totalRupees)
-    #print(arrayOfDays)
+    print(arrayOfDays)
     #print(mostEfficientArray)
     #print(val)
 
 questsToChoose()
-            
 
+
+
+ranArray = [1, 2, 3, 4, 5, 6, 7, 8]
+
+if (2, 3) not in ranArray:
+    print("Hello")
 
 
 
