@@ -1,7 +1,7 @@
 startDate = 0
 duration = 0
 rupees = 0
-maxDays = 31
+maxDays = 31 # not needed but kept in case
 
 totalCurrDays = 0
 startDateArray = [1, 2, 1, 3, 5, 3, 7, 12, 6, 19, 23, 14, 8, 20, 28, 10, 13, 25, 9, 16, 4, 11, 7, 2]
@@ -18,7 +18,6 @@ def questsToChoose():
         mostEfficientArray[i] = rupeesArray[i] / durationArray[i]
     # most efficient array now has rupees per day
     
-    
     for i in range(len(startDateArray)):
         dayAlreadyBusy = False
         val = 0
@@ -27,39 +26,19 @@ def questsToChoose():
             if (mostEfficientArray[j] > val):
                 index = j
                 val = mostEfficientArray[j]
-        
         # highest value now found
-        print(range(startDateArray[index], startDateArray[index] + durationArray[index] - 1))
         for k in range(startDateArray[index], startDateArray[index] + durationArray[index]):
-            #print(k)
-            if k in arrayOfDays:
+            if k in arrayOfDays or k > maxDays:
                 dayAlreadyBusy = True
-        #print(totalRupees)
-        print(dayAlreadyBusy)
+        # checks if current quests are conflicting with ones already assigned
         if dayAlreadyBusy == False:
             totalRupees += rupeesArray[index]
             for k in range(durationArray[index]):
                 arrayOfDays.append(startDateArray[index] + k)
-            #print("HELLO")
-        #print("Array of days: ")
-        #print(arrayOfDays)
+        # if above statement passes, then quest is available
         mostEfficientArray[index] = 0
         
-    
-    print(totalRupees)
-    print(arrayOfDays)
-    #print(mostEfficientArray)
-    #print(val)
+    # all quests have now been decided
+    print("Given the amount of time Link has, the maximum amount of rupees Link can earn is", totalRupees, "rupees.")
 
 questsToChoose()
-
-
-
-ranArray = [1, 2, 3, 4, 5, 6, 7, 8]
-
-if (2, 3) not in ranArray:
-    print("Hello")
-
-
-
-
